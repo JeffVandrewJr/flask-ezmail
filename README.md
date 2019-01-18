@@ -1,5 +1,7 @@
 # Flask-EZMail
 
+(c) 2019 Jeff Vandrew Jr
+
 Flask-EZMail is easier email for Flask. 
 
 Flask-EZMail is a fork of Flask-Mail. it maintains high compatibility with Flask-Mail, such that very little code refactoring is needed to switch from one to the other.
