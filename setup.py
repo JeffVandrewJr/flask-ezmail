@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='flask-ezmail',
-    version='0.6.2',
+    version='0.6.3',
     url='https://github.com/JeffVandrewJr/flask-ezmail',
     license='MIT',
     author='Jeff Vandrew Jr',
