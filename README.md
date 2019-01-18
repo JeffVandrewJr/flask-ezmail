@@ -99,6 +99,8 @@ if mail is not None:
     mail.server = 'example.net'
     db.session.commit()
 ```
+
+## Sending an Email
 Sending a message uses the same Message object as Flask-Mail (cloned in Flask-EZMail).
 ```python3
 from flask_ezmail import Message
