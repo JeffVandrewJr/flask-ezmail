@@ -3,3 +3,5 @@ jeff.py
 venv/
 notes
 __pycache__
+build/
+dist/
