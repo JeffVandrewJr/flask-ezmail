@@ -112,4 +112,4 @@ msg = Message(
 )
 mail.send(msg)
 ```
-Flask-EZmail likewise uses the same `connect()` method as Flask-Mail.
+Flask-EZmail likewise uses the same `connect()` method as Flask-Mail for bulk emails.
