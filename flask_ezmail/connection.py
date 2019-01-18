@@ -37,9 +37,10 @@ class Connection(object):
             host = smtplib.SMTP_SSL(self.mail.server, self.mail.port)
         else:
             host = smtplib.SMTP(self.mail.server, self.mail.port)
-
-        host.set_debuglevel(int(self.mail.debug))
-
+        if self.mail.debug is not None:
+            host.set_debuglevel(int(self.mail.debug))
+        else:
+            host.set_debuglevel(int(False))
         if self.mail.use_tls:
             host.starttls()
         if self.mail.username and self.mail.password:
