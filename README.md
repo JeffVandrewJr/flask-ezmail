@@ -1,6 +1,8 @@
 # Flask-EZMail
 
-Flask-EZMail is easier email for Flask. It is a fork of Flask-Mail. it maintains high compatibility with Flask-Mail, such that very little code refactoring is needed to switch from one to the other.
+Flask-EZMail is easier email for Flask. 
+
+Flask-EZMail is a fork of Flask-Mail. it maintains high compatibility with Flask-Mail, such that very little code refactoring is needed to switch from one to the other.
 
 Flask-Mail is a convenient wrapper for smtlib, but it requrires that SMTP settings be loaded on app creation. If your user is entering SMTP settings via a web interface, it's not optimal and requires workarounds.
 
