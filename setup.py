@@ -1,6 +1,8 @@
 import setuptools
 from setuptools import setup
 
+with open('README.md', 'r') as fh:
+    long_description = fh.read()
 
 setup(
     name='flask-ezmail',
@@ -10,6 +12,8 @@ setup(
     author='Jeff Vandrew Jr',
     author_email='jeffvandrew@protonmail.ch',
     description='Flask extension for sending email',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     install_requires=[
         'blinker'
     ],
