@@ -2,16 +2,15 @@ from setuptools import setup
 
 
 setup(
-    name='flask-ezail',
-    version='0.5',
+    name='flask-ezmail',
+    version='0.6.1'
     url='https://github.com/JeffVandrewJr/flask-ezmail',
     license='MIT',
     author='Jeff Vandrew Jr',
     author_email='jeffvandrew@protonmail.ch',
     description='Flask extension for sending email',
-    py_modules=[
     install_requires=[
-        'blinker',
+        'blinker'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
