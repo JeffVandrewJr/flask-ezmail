@@ -71,7 +71,7 @@ import pickle
 # this assumes you've set up redis in app/__init__.py
 current_app.redis.set('mail', pickle.dumps(mail))
 ```
-Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save the mail object in your database instead:
+2. Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save the mail object in your database instead:
 ```python3
 # app/models.py
 
