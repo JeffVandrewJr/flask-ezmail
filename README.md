@@ -92,7 +92,7 @@ class Email(Mail, db.Model):
     max_emails = db.Column(db.Integer)
     suppress = db.Column(db.Boolean)
 ```
-If you went the SQLAlchemy route, any time you need to grab your email client you'd just:
+If you went the Flask-SQLAlchemy route, any time you need to grab your email client you'd just:
 ```python3
 mail = Email.query.first()
 ```
