@@ -116,6 +116,7 @@ msg = Message(
     'Test Message',
     sender='sender@sender.com',
     recipients=['recipient@recipient.com'],
+    body='Hello!',
 )
 mail.send(msg)
 ```
