@@ -39,10 +39,10 @@ mail = Mail(
 
 In that example, you'd have a global variable called `mail` that you'd be able to import in your other modules using `from app import mail`. There's nothing special there, as that's similar to Flask-Mail. 
 
-But here is where the flexibility comes in! Let's instead say your user fills out a form in the admin panel that sets SMTP settings later, after app creation. We'll assume you've defined that as `EmailSetupForm` in your `app.models`. You could then set up mail this way instead:
+But now instead assume your user fills out a form in the admin panel that sets SMTP settings later, after app creation. This example will assume you've defined that form for getting SMTP data as `EmailSetupForm` in `app.forms`. You could then set up mail this way instead:
 
 ```python3
-from app.models import EmailSetupForm
+from app.forms import EmailSetupForm
 from flask_ezmail import Mail
 
 @app.route('/emailsetup', methods=[GET, POST])
@@ -51,7 +51,7 @@ def email_setup():
   
   <code to render the form, accept POST data, etc>
 
-  #create mail object using data from form
+  #create mail object using data from the form
   mail = Mail(
     server=form.server.data,
     username=form.username.data,
@@ -71,7 +71,7 @@ import pickle
 # this assumes you've set up redis in app/__init__.py
 current_app.redis.set('mail', pickle.dumps(mail))
 ```
-Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save it in your database instead:
+Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save the mail object in your database instead:
 ```python3
 # app/models.py
 
