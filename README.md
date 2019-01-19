@@ -6,9 +6,9 @@ Flask-EZMail is easier email for Flask.
 
 Flask-EZMail is a fork of Flask-Mail. it maintains high compatibility with Flask-Mail, such that very little code refactoring is needed to switch from one to the other.
 
-Flask-Mail is a convenient wrapper for smtlib, but it requrires that SMTP settings be loaded on app creation. With Flask-Mail, if your user is entering SMTP settings via a web interface, it's not optimal and requires workarounds.
+Flask-Mail is a convenient wrapper for smtlib, but it requrires that SMTP settings be loaded on app creation. With Flask-Mail, if your user is entering SMTP settings after app creation (which would be the case if the SMTP settings are set via a web-based administrator interface while the app is running), it's not optimal and requires workarounds.
 
-That's where Flask-EZMail comes in. Flask-EZMail is designed to be flexible. You can load SMTP settings at app creation like you would with Flask-Mail, or you can load them at any later time if your user is setting them through an web admin panel. Check out the examples below!
+That's where Flask-EZMail comes in. Flask-EZMail is designed to be flexible. You can load SMTP settings at app creation like you would with Flask-Mail, or you can load them at any later time if your user is setting them through an web admin panel. Check out the examples below.
 
 ## Installation
 ```bash
@@ -45,17 +45,22 @@ But here is where the flexibility comes in! Let's instead say your user fills ou
 from app.models import EmailSetupForm
 from flask_ezmail import Mail
 
-form = EmailSetupForm()
+@app.route('/emailsetup', methods=[GET, POST])
+def email_setup():
+  form = EmailSetupForm()
+  
+  <code to render the form, accept POST data, etc>
 
-mail = Mail(
-  server=form.server.data,
-  username=form.username.data,
-  password=form.password.data,
-  port=form.port.data,
-  use_tls=True,
-  default_sender=form.default_sender.data,
-  debug=False
-)
+  #create mail object using data from form
+  mail = Mail(
+    server=form.server.data,
+    username=form.username.data,
+    password=form.password.data,
+    port=form.port.data,
+    use_tls=True,
+    default_sender=form.default_sender.data,
+    debug=False
+  )
 ```
 You now have a mail object created on the fly! You'll probably want to stash it for later use elsewhere in your app. You have lots of options regarding how to do that:
 
@@ -66,7 +71,7 @@ import pickle
 # this assumes you've set up redis in app/__init__.py
 current_app.redis.set('mail', pickle.dumps(mail))
 ```
-Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save it that way instead:
+Alternatively if you're using Flask-SQLAlchemy, you could create an email model that inherits from `Mail`, and save it in your database instead:
 ```python3
 # app/models.py
 
