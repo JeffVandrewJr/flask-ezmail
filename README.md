@@ -17,7 +17,7 @@ pip install flask-ezmail
 
 ## Creating an Email Object
 
-Let's say you want to load SMTP settings at app creation and never change them, just like Flask-Mail would expect:
+If you want to load SMTP settings at app creation and never change them, just like Flask-Mail would expect, you can set up Flask-EZMail like this:
 ```python3
 # app/__init__.py
 ...
@@ -37,9 +37,9 @@ mail = Mail(
 )
 ```
 
-In that example, you'd have a global variable called `mail` that you'd be able to import in your other modules using `from app import mail`. There's nothing special there, as that's similar to Flask-Mail. 
+In that example, you'd have a global variable called `mail` that you'd be able to import in your other modules using `from app import mail`. There's nothing special there, as it's similar to Flask-Mail. 
 
-But now instead assume your user fills out a form in the admin panel that sets SMTP settings later, after app creation. This example will assume you've defined that form for getting SMTP data as `EmailSetupForm` in `app.forms`. You could then set up mail this way instead:
+But now instead assume your app is structures so that the user fills out a form in the admin panel that sets SMTP settings after app creation. You could then set up mail this way instead:
 
 ```python3
 from app.forms import EmailSetupForm
@@ -62,7 +62,7 @@ def email_setup():
     debug=False
   )
 ```
-You now have a mail object created on the fly! You'll probably want to stash it for later use elsewhere in your app. You have lots of options regarding how to do that:
+You now have a mail object created on the fly! You'll probably want to stash it for later use elsewhere in your app. You have lots of options regarding how to do that; here are two examples:
 
 1. You could pickle it and save it to redis:
 ```python3
