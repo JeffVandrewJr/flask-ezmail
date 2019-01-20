@@ -39,7 +39,7 @@ mail = Mail(
 
 In that example, you'd have a global variable called `mail` that you'd be able to import in your other modules using `from app import mail`. There's nothing special there, as it's similar to Flask-Mail. 
 
-But now instead assume your app is structures so that the user fills out a form in the admin panel that sets SMTP settings after app creation. You could then set up mail this way instead:
+But now instead assume your app is structured so that the user fills out a form in the admin panel that sets SMTP settings after app creation. You could then set up mail this way instead:
 
 ```python3
 from app.forms import EmailSetupForm
